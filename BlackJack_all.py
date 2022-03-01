@@ -2,11 +2,10 @@
 
 import random
 from IPython.display import clear_output
+import collections
 
 class Card:
  
-    suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-    ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
     values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
     
     def __init__(self,suit,rank):
@@ -138,8 +137,18 @@ def enter_yorn():
         else:
             return yornl
 
+def enter_string():
+    while True:
+        try:
+            name =input('Enter your name: ')
+            namel =name.capitalize()
+        except:
+            print('please enter a valid name')
+        else:
+            return namel
+
 #GAME LOGIC
-player_one = Player('Juan',100)
+player_one = Player(enter_string(),100)
 house = Player('House',0)
 new_deck = Deck()
 new_deck.shuffle()
