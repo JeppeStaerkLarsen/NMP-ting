@@ -183,7 +183,7 @@ while game_on:
         
     
     
-    while house.hand_value() < 17 and house.hand_value() <= player_one.hand_value():
+    while house.hand_value() <= player_one.hand_value():
         house.add_cards(new_deck.deal_top_card())
         
     
