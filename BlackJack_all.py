@@ -3,33 +3,33 @@
 import random
 from IPython.display import clear_output
 
-suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
-
-
 class Card:
-
-    
+ 
+    suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+    ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+    values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
     
     def __init__(self,suit,rank):
+
         self.suit = suit
         self.rank = rank
-        self.value = values[rank]
+        self.value = Card.values[rank]
         
     
     def __str__(self):
         return self.rank + ' of ' + self.suit
 
 
+
 class Deck:
+
+    suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+    ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+
     def __init__(self):
-        self.suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-        self.ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-        self.values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
         self.all_cards=[]
-        for suit in self.suits:
-            for rank in self.ranks:
+        for suit in Deck.suits:
+            for rank in Deck.ranks:
                 self.all_cards.append(Card(suit,rank))
                 
                 
@@ -38,6 +38,9 @@ class Deck:
     
     def deal_top_card(self):
         return self.all_cards.pop(0)
+
+
+
 
 
 class Player: #Player object has name, amount and a hand
@@ -138,12 +141,8 @@ def enter_yorn():
 #GAME LOGIC
 player_one = Player('Juan',100)
 house = Player('House',0)
-
 new_deck = Deck()
-
 new_deck.shuffle()
-
-#new_deck.all_cards = [Card('Hearts','Two')]
 
 
 game_on = True
@@ -215,8 +214,7 @@ while game_on:
     
 #Tjek om self.amount > 0  
     print('Do you want to play another round? y/n')
-    play_again = enter_yorn()
-    if play_again=='n':
+    if enter_yorn() =='n':
         game_on = False
     else:
         first_round = True
